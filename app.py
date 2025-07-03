@@ -15,11 +15,11 @@ app = Flask(__name__)
 
 ALLOWED_IP = '192.168.50.'
 
-@app.before_request
+"""@app.before_request
 def limit_remote_addr():
     client_ip = request.remote_addr
     if not client_ip.startswith(ALLOWED_IP):
-    	abort(403)  
+    	abort(403)  """
 
 @app.route('/') 
 def home():
@@ -45,7 +45,7 @@ def home():
             "post_frequency": 1
         }
 	}        
-	return jsonify(doc)
+	return request.remote_addr #jsonify(doc)
 
 @app.route('/predict_introvert', methods=['GET']) 
 def predecir_si_introvert():
