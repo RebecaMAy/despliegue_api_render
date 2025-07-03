@@ -89,5 +89,6 @@ def devolver_predicciones():
 
 	#2.- devolver todo
 	return jsonify(predictions_list), 200
-         
-app.run()
+
+if __name__ == "__main__":
+	app.run()
