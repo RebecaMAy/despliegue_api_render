@@ -13,12 +13,12 @@ with open('predict_introvert.pkl', 'rb') as f:
 
 app = Flask(__name__)
 
-@app.before_request
+"""@app.before_request
 def limit_remote_addr():
 	client_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
 	client_ip = client_ip.split(',')[0].strip()
 	if not client_ip.startswith('192.168.50.'):
-		abort(403)
+		abort(403)"""
 
 @app.route('/') 
 def home():
@@ -43,8 +43,10 @@ def home():
             "num_friends": 10,
             "post_frequency": 1
         }
-	}        
-	return jsonify(doc)
+	}   
+	client_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+	client_ip = client_ip.split(',')[0].strip()
+	return client_ip#jsonify(doc)
 
 @app.route('/predict_introvert', methods=['GET']) 
 def predecir_si_introvert():
