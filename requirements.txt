@@ -3,3 +3,4 @@ firebase-admin
 google-cloud-firestore
 pandas
 gunicorn
+scikit-learn
