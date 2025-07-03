@@ -13,6 +13,14 @@ with open('predict_introvert.pkl', 'rb') as f:
 
 app = Flask(__name__)
 
+ALLOWED_IP = '192.168.50.'
+
+@app.before_request
+def limit_remote_addr():
+    client_ip = request.remote_addr
+    if not client_ip.startswith(ALLOWED_IP):
+    	abort(403)  
+
 @app.route('/') 
 def home():
 
