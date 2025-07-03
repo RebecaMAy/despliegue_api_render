@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 """@app.before_request
 def limit_remote_addr():
-	client_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+	client_ip = request.headers.get('X-Forwarded-For', '')
 	client_ip = client_ip.split(',')[0].strip()
 	if not client_ip.startswith('192.168.50.'):
 		abort(403)"""
@@ -44,7 +44,7 @@ def home():
             "post_frequency": 1
         }
 	}   
-	client_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+	client_ip = request.headers.get('X-Forwarded-For', '')
 	client_ip = client_ip.split(',')[0].strip()
 	return client_ip#jsonify(doc)
 
